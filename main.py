@@ -54,9 +54,16 @@ def main():
             SELECT tagID FROM Tag WHERE tagName = 'CS'  
             ))"""
     displayResult(sql)
-    # TestCase 2 : Deleting user will delete all posts made by the user
-    # sql = "DELETE FROM User where userID = 2"
-    # executeQuery(sql)
-   
+
+    # TestCase 6 : Deleting user will delete all posts made by the user
+    sql = "DELETE FROM User where userID = 1"
+    executeQuery(sql)
+    tables = ["User","Blog","Comment","Tag","TagMap"]
+    sql_list = ["SELECT * FROM User","SELECT * FROM Blog", "SELECT * FROM Comment","SELECT * FROM Tag",
+                "SELECT * FROM TagMap"]
+    for sql,table in zip(sql_list,tables):
+        print(table)
+        displayResult(sql)
+        print('\n')
 
 main()
